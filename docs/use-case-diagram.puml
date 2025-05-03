@@ -1,0 +1,78 @@
+@startuml TrendLens Use Cases
+
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam rectangle {
+    roundCorner 15
+    shadowing false
+}
+
+left to right direction
+
+' Actors
+actor User
+actor "Business Owner" as BO
+actor "News API" as API
+actor "AI Service" as AI
+actor "System" as System
+
+rectangle TrendLens {
+    ' News Analysis Use Cases
+    usecase "Search Articles" as UC1
+    usecase "View Article List" as UC2
+    usecase "View Article Details" as UC3
+    usecase "Analyze Sentiment" as UC4
+    usecase "Fetch News" as UC5
+    usecase "Filter Articles" as UC6
+    usecase "Sort Articles" as UC7
+    usecase "Save Articles" as UC8
+
+    ' Business Analysis Use Cases
+    usecase "Authenticate with OAuth" as BUC1
+    usecase "Upload Sales Data" as BUC2
+    usecase "Parse & Map Columns" as BUC3
+    usecase "Clean Data" as BUC4
+    usecase "Analyze Trends" as BUC5
+    usecase "Generate Badge" as BUC6
+    usecase "Generate Insights" as BUC7
+    usecase "Update Dashboard" as BUC8
+    usecase "Display Dashboard Results" as BUC9
+}
+
+' User & News Analysis interactions
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC6
+User --> UC7
+
+' Business Owner interactions
+BO --> BUC1 : "Starts Session"
+BO --> BUC2 : "Upload File"
+
+' System interactions
+API --> UC5
+AI --> UC4
+System --> BUC1 : "Provide OAuth Access"
+System --> BUC5 : "Provide ML Models"
+System --> BUC8 : "Handle Data Storage"
+System --> BUC9 : "Render Dashboard"
+
+' News Analysis relationships
+UC2 ..> UC5 : <<include>>
+UC3 ..> UC4 : <<include>>
+UC2 ..> UC8 : <<include>>
+UC1 ..> UC2 : <<include>>
+UC6 ..> UC2 : <<include>>
+UC7 ..> UC2 : <<include>>
+
+' Business Analysis relationships
+BUC2 --> BUC3 : "Trigger Parsing"
+BUC3 --> BUC4 : "Trigger Cleaning"
+BUC4 --> BUC5 : "Trigger Analysis"
+BUC5 --> BUC6 : "Trigger Badge"
+BUC5 --> BUC7 : "Generate Insights"
+BUC7 --> BUC8 : "Update Dashboard"
+BUC8 --> BUC9 : "Display Results"
+
+@enduml

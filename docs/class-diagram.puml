@@ -1,0 +1,73 @@
+@startuml TrendLens Architecture
+
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+namespace Frontend {
+    class App {
+        -articles: Article[]
+        +render(): void
+    }
+
+    class ArticleList {
+        -articles: Article[]
+        +render(): void
+    }
+
+    class ArticleCard {
+        -article: Article
+        +render(): void
+    }
+
+    class SearchBar {
+        -searchTerm: string
+        +handleSearch(): void
+    }
+
+    class ArticleModal {
+        -article: Article
+        -isOpen: boolean
+        +open(): void
+        +close(): void
+    }
+}
+
+namespace Backend {
+    class Article {
+        +id: string
+        +title: string
+        +content: string
+        +date: Date
+        +source: string
+        +sentiment: number
+    }
+
+    class NewsService {
+        +fetchArticles(): Article[]
+        +analyzeArticle(Article): void
+    }
+
+    class SentimentAnalyzer {
+        +analyze(text: string): number
+    }
+
+    class DataStorage {
+        +saveArticle(Article): void
+        +getArticles(): Article[]
+    }
+}
+
+' Class relationships
+App "1" *-- "1" ArticleList : contains
+ArticleList "1" *-- "*" ArticleCard : contains
+App "1" *-- "1" SearchBar : contains
+App "1" *-- "1" ArticleModal : contains
+ArticleCard ..> Article : uses
+NewsService ..> Article : creates
+NewsService ..> SentimentAnalyzer : uses
+NewsService ..> DataStorage : uses
+
+@enduml
