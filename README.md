@@ -15,7 +15,7 @@ A comprehensive sales analytics dashboard built with Python and Streamlit that p
 
 1. Clone this repository
 ```bash
-git clone <your-repository-url>
+git clone [<your-repository-url>](https://github.com/shynzz11/TrendScape.git)
 ```
 
 2. Install required packages
