@@ -1,4 +1,4 @@
-# TrendLens Dashboard
+# TrendScape Dashboard
 
 A comprehensive sales analytics dashboard built with Python and Streamlit that provides insights into sales trends, customer behavior, and product performance.
 
