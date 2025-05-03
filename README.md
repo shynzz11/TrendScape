@@ -1,4 +1,4 @@
-# TrendLens Dashboard
+# TrendScape Dashboard
 
 A comprehensive sales analytics dashboard built with Python and Streamlit that provides insights into sales trends, customer behavior, and product performance.
 
@@ -16,7 +16,7 @@ A comprehensive sales analytics dashboard built with Python and Streamlit that p
 1. Clone this repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/shynzz11/TrendScape.git
 ```
 
 2. Install required packages
